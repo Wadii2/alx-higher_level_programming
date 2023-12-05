@@ -1,26 +1,25 @@
 #include "lists.h"
+
+/**
+ * is_palindrome - checks if a list is palindrome
+ * @head: list
+ * Return: 0 if it is not a palindrome, 1 if it is a palindrome
+*/
 int is_palindrome(listint_t **head)
 {
-	listint_t *current = *head, *palin = *head;
-	int counter = 0, i = 0, j = 0;
+    listint_t *current = *head;
+    static listint_t *list;
 
-	if (!*head)
-		return (1);
-
-	while (current)
-	{
-		current = current->next;
-		counter++;
-	}
-	current = *head;
-	for (i = 1; i <= counter; i++)
-	{
-		for (j = i; j <= counter - i; j++)
-			palin = palin->next;
-		if (current->n != palin->n)
-			return (0);
-		current = current->next;
-		palin = current;
-	}
-	return (1);
+    if (current == NULL)
+        return (1);
+    if (list == NULL)
+        list = current;
+    if (is_palindrome(&current->next) && list->n == current->n)
+    {
+        list = list->next;
+        current = current->next;
+        return (1);
+    }
+    list = current;
+    return (0);   
 }
