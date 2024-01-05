@@ -1,14 +1,26 @@
 #!/usr/bin/python3
-Square = __import__('4-square').Square
+Rectangle = __import__('4-rectangle').Rectangle
 
-my_square = Square(89)
-print("Area: {} for size: {}".format(my_square.area(), my_square.size))
+my_rectangle = Rectangle(2, 4)
+print(str(my_rectangle))
+print("--")
+print(my_rectangle)
+print("--")
+print(repr(my_rectangle))
+print("--")
+print(hex(id(my_rectangle)))
+print("--")
 
-my_square.size = 3
-print("Area: {} for size: {}".format(my_square.area(), my_square.size))
+# create new instance based on representation
+new_rectangle = eval(repr(my_rectangle))
+print(str(new_rectangle))
+print("--")
+print(new_rectangle)
+print("--")
+print(repr(new_rectangle))
+print("--")
+print(hex(id(new_rectangle)))
+print("--")
 
-try:
-    my_square.size = "5 feet"
-    print("Area: {} for size: {}".format(my_square.area(), my_square.size))
-except Exception as e:
-    print(e)
+print(new_rectangle is my_rectangle)
+print(type(new_rectangle) is type(my_rectangle))

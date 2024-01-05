@@ -1,17 +1,12 @@
 #!/usr/bin/python3
-Square = __import__('5-square').Square
+Rectangle = __import__('5-rectangle').Rectangle
 
-my_square = Square(3)
-my_square.my_print()
+my_rectangle = Rectangle(2, 4)
+print("Area: {} - Perimeter: {}".format(my_rectangle.area(), my_rectangle.perimeter()))
 
-print("--")
+del my_rectangle
 
-my_square.size = 10
-my_square.my_print()
-
-print("--")
-
-my_square.size = 0
-my_square.my_print()
-
-print("--")
+try:
+    print(my_rectangle)
+except Exception as e:
+    print("[{}] {}".format(e.__class__.__name__, e))
